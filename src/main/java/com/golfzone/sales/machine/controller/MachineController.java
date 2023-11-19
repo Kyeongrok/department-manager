@@ -3,6 +3,7 @@ package com.golfzone.sales.machine.controller;
 import com.golfzone.sales.infra.entity.MachineEntity;
 import com.golfzone.sales.infra.entity.MachineRepository;
 import com.golfzone.sales.machine.dto.MachineCreateRequestDto;
+import com.golfzone.sales.machine.dto.MachineCreateResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +27,7 @@ public class MachineController {
     }
 
     @PostMapping
-    public ResponseEntity<MachineEntity> create(
+    public ResponseEntity<MachineCreateResponse> create(
             // 데이터를 입력받을 dto만들기
             @RequestBody MachineCreateRequestDto requestDto
     ) {
@@ -37,6 +38,6 @@ public class MachineController {
         MachineEntity savedMachineEntity = machineRepository.save(machineEntity);
 
         // 저장한 값 return
-        return ResponseEntity.ok(savedMachineEntity);
+        return ResponseEntity.ok(MachineCreateResponse.fromEntity(savedMachineEntity));
     }
 }
