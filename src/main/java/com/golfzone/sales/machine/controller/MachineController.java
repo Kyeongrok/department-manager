@@ -27,12 +27,16 @@ public class MachineController {
 
     @PostMapping
     public ResponseEntity<MachineEntity> create(
+            // 데이터를 입력받을 dto만들기
             @RequestBody MachineCreateRequestDto requestDto
     ) {
-
+        // DTO를 Entity로
         MachineEntity machineEntity = new MachineEntity(UUID.randomUUID().toString(), requestDto.getName(), requestDto.isEnabled());
+
+        // Entity저장하기
         MachineEntity savedMachineEntity = machineRepository.save(machineEntity);
 
+        // 저장한 값 return
         return ResponseEntity.ok(savedMachineEntity);
     }
 }
