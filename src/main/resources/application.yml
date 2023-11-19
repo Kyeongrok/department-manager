@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:sqlserver://3.37.17.244:1433;encrypt=false;databaseName=master
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    username: SA
+    password: 11223344
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServer2016Dialect
+        default_batch_fetch_size: 100
+    show-sql: true
